@@ -12,6 +12,10 @@ class AquariaController extends Controller
         return response()->json(Aquarium::all(), 200);
     }
 
+    public function show($id){
+        return Aquarium::find($id);
+    }
+
     public function store(Request $request){
 
         $request->validate([
@@ -27,5 +31,9 @@ class AquariaController extends Controller
         $aquaruim = Aquarium::find($id);
         $aquaruim->update($request->all());
         return $aquaruim;
+    }
+
+    public function destroy($id) {
+        return Aquarium::destroy($id);
     }
 }
