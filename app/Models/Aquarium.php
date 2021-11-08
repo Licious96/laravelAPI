@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Aquarium extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'glass_type',
+        'size',
+        'shape'
+    ];
+
     public function fishes(){
         return $this->hasMany(Fish::class);
     }

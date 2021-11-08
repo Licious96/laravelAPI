@@ -21,7 +21,10 @@ use Illuminate\Support\Facades\Route;
 //     return 'This is a text';
 // });
 
-Route::get('/aquaria', [AquariaController::class, 'index']);
+// Route::get('/aquaria', [AquariaController::class, 'index']);
+// Route::post('/aquaria', [AquariaController::class, 'add_aquarium']);
+
+Route::resource('/aquaria', AquariaController::class);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
