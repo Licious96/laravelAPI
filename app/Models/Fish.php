@@ -7,6 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Fish extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'aquarium_id',
+        'species',
+        'color',
+        'fins'
+    ];
+
     public function aquarium(){
         return $this->belongsTo(Aquarium::class);
     }
