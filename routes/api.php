@@ -20,18 +20,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 // API for CRUD operation on aquarium
-Route::resource('/aquaria', AquariaController::class);
+//Route::resource('/aquaria', AquariaController::class);
 
 //API endpoint for adding a fish in an aquariam, the choosen aquarium id has to be entered
-Route::post('/aquaria/{id}/fish', [AquariaController::class, 'add_fish']);
+Route::post('/aquaria/fish/{id}', [AquariaController::class, 'add_fish']);
 
 //API endpoint for to retrieve all fish for a given aquarium, the desired aquarium id has to be entered
-Route::get('/aquaria/{id}/fish', [AquariaController::class, 'all_fish']);
+Route::get('/aquaria/fish/{id}', [AquariaController::class, 'all_fish']);
 
 //API endpoint to update a given fish in an aquarium, the desired fish id has to be entered
-Route::put('/fish/{id}/edit', [AquariaController::class, 'update_fish']);
+Route::put('/aquaria/fish/{id}', [AquariaController::class, 'update_fish']);
 
-//API to convert litres to gallons
+//API to convert litres to gallons and gallons to litres
 Route::post('/aquaria/convert-size-to/{size}', [AquariaController::class, 'convert_size']);
 
 

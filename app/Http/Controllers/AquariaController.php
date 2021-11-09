@@ -8,41 +8,41 @@ use App\Models\Fish;
 
 class AquariaController extends Controller
 {
-    //
-    public function index(){
-        return response()->json(Aquarium::all(), 200);
-    }
+    // CRUD operation functions for aquaria
+    // public function index(){
+    //     return response()->json(Aquarium::all(), 200);
+    // }
 
-    public function show($id){
-        return Aquarium::find($id);
-    }
+    // public function show($id){
+    //     return Aquarium::find($id);
+    // }
 
-    public function store(Request $request){
+    // public function store(Request $request){
 
-        $request->validate([
-            'glass_type' => 'required',
-            'size' => 'required',
-            'shape' => 'required'
-        ]);
+    //     $request->validate([
+    //         'glass_type' => 'required|string|regex:/(^([a-zA-Z]+)(\d+)?$)/u',
+    //         'size' => 'required|decimal',
+    //         'shape' => 'required|string|regex:/(^([a-zA-Z]+)(\d+)?$)/u'
+    //     ]);
 
-        return Aquarium::create($request->all());
-    }
+    //     return Aquarium::create($request->all());
+    // }
 
-    public function update(Request $request, $id){
-        $aquaruim = Aquarium::find($id);
-        $aquaruim->update($request->all());
-        return $aquaruim;
-    }
+    // public function update(Request $request, $id){
+    //     $aquaruim = Aquarium::find($id);
+    //     $aquaruim->update($request->all());
+    //     return $aquaruim;
+    // }
 
-    public function destroy($id) {
-        return Aquarium::destroy($id);
-    }
+    // public function destroy($id) {
+    //     return Aquarium::destroy($id);
+    // }
 
     public function add_fish(Request $request, $id){
 
         $request->validate([
-            'species' => 'required|string',
-            'color' => 'required|string',
+            'species' => 'required|string|regex:/(^([a-zA-Z]+)(\d+)?$)/u',
+            'color' => 'required|string|regex:/(^([a-zA-Z]+)(\d+)?$)/u',
             'fins' => 'required|integer'
         ]);
 
@@ -138,20 +138,20 @@ class AquariaController extends Controller
             return response()->json("The aquarium size is already in ".$size, 400);
         }
 
-        if(strtolower($size) == 'gallon' || strtolower($size) == 'gallons'){
+        if(strtolower($size) == 'gallons'){
             foreach ($aquaria as $key => $aquaruim) {
                 $aquaruim->size = $aquaruim->size * 0.264172052;
                 $aquaruim->unit = 'gallons';
                 $aquaruim->save();
             }
-            return "Size converted from Litres to Gallons";
-        }else if(strtolower($size) == 'litre' || strtolower($size) == 'litres'){
+            return "Aquarium size converted from Litres to Gallons";
+        }else if(strtolower($size) == 'litres'){
             foreach ($aquaria as $key => $aquaruim) {
                 $aquaruim->size = $aquaruim->size * 3.78541178;
                 $aquaruim->unit = 'litres';
                 $aquaruim->save();
             }
-            return "Size converted from Gallons to Litres";
+            return "Aquarium size converted from Gallons to Litres";
         }else{
             return response()->json("You did not enter the correct unit size, please enter litres or gallons", 400);
         }

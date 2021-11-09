@@ -19,8 +19,34 @@ class CreateAquariaTable extends Migration
             $table->decimal('size');
             $table->string('unit')->default('litres');
             $table->string('shape');
-            $table->timestamps();
+            $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
+
+        DB::table('aquaria')->insert(
+            [     
+                [
+                    'glass_type' => 'Laminated', 
+                    'size' => 100,
+                    'shape' => 'Square'
+                ],     
+                [
+                    'glass_type' => 'Shatterproof', 
+                    'size' => 70,
+                    'shape' => 'Rectangle'
+                ],
+                [
+                    'glass_type' => 'Float', 
+                    'size' => 150,
+                    'shape' => 'Pyramid'
+                ],
+                [
+                    'glass_type' => 'Tinted', 
+                    'size' => 75,
+                    'shape' => 'Square'
+                ]
+            ]
+    );
     }
 
     /**
