@@ -17,6 +17,7 @@ class CreateAquariaTable extends Migration
             $table->id();
             $table->string('glass_type');
             $table->decimal('size');
+            $table->string('unit')->default('litres');
             $table->string('shape');
             $table->timestamps();
         });
