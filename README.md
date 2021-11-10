@@ -16,9 +16,9 @@
 - Change the name of the .env.example file to .env
 - Open the .env file and add laravelapi on the DB_DATABASE
 - Also add database connection of your choice next to DB_CONNECTION, in my case I used 'mysql'
-- Now create a database in the db manager of your choosen database, in my case I used XAMPP to create a database in PHPMyAdmin and named it laravelapi
+- Now create a database in the db manager of your chosen database, in my case I used XAMPP to create a database in PHPMyAdmin and named it laravelapi
 - Open the terminal or the command line on your IDE and run 'composer install' (If you do not have composer installed on your machine, please download it from (https://getcomposer.org/) and install it on your computer)
-- Again run 'php artisan migrate' on your terminal to create the required tables in the database
+- Next run 'php artisan migrate' on your terminal to create the required tables in the database
 - Now run 'php artisan serve' to start your project.
 - Open any app to test your API, in my case I used Postman to test the API's.
 - Copy and paste this url 'http://127.0.0.1:8000/api/aquaria/fish/1' and choose post on the method in order to add a fish in aquarium one.
